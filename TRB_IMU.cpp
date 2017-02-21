@@ -20,6 +20,35 @@
 	[classname]::[methodName]
 */
 
+/*
+	where should this code be used?
+*/
+void updateIntervalParams(BLEDevice central) {
+	// read and update the connection interval that peer central device
+	static unsigned short interval = 0x60;
+	ble_conn_param_t m_conn_param;
+	// Get connection interval that peer central device wanted
+	//central.getConnParams(m_conn_param);
+	Serial.print("min interval = " );
+	Serial.println(m_conn_param.interval_min );
+	Serial.print("max interval = " );
+	Serial.println(m_conn_param.interval_max );
+	Serial.print("latency = " );
+	Serial.println(m_conn_param.latency );
+	Serial.print("timeout = " );
+	Serial.println(m_conn_param.timeout );
+
+	//Update connection interval
+	Serial.println("set Connection Interval");
+	central.setConnectionInterval(interval, interval);
+
+	interval++;
+	if (interval < 0x06)
+	interval = 0x06;
+	if (interval > 0x100)
+	interval = 0x06;
+}
+
 void TRB_IMU::inSetup(void) {
 	
   // start the IMU and filter
