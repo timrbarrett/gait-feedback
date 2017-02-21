@@ -1,0 +1,39 @@
+Thoughts:
+
+BLE transits from Genuino101, 
+	but it does not transmit the correct buffer contents
+	correction - it looks like it sends what was requested.
+	
+BLE does not receive text from the android device at all.
+
+TODOs:
+	Fix the text squirted to the SD card.
+	
+	TRB_IMU_H
+		prune unused private variables
+			ax,y,z
+			gx,y,z
+			pitch, roll, heading
+			accelScale, gyroScale
+			
+			all the char out definitions.
+			
+		prune unused conversion methods
+			raw acceleration
+			raw gyro
+	
+	TRB_Time
+	
+		fix getFilename()
+		could strcpy all values
+		
+	TRB_BLE
+	
+		remove (int dummy) from constructor
+		
+	in main
+	
+		if (millis() > futureTime) {
+			close the file:
+			Serial.println("File closed");
+		}
