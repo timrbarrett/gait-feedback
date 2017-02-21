@@ -63,6 +63,8 @@ void setup() {
   imu.inSetup();
   timeObject.inSetup();
   ble.inSetup();
+  ble.updateIntervalParameters();
+  
   /*
      Define the 5000 second delay to take reading after all of the initialisation code has run
   */
